@@ -88,10 +88,10 @@ modules:
         - libswscale-free
         - ffmpeg-free
         # Fedora web browser stuff
-#        - fedora-bookmarks
-#        - fedora-chromium-config
-#        - fedora-chromium-config-gnome
-#        - fedora-flathub-remote
+        - fedora-bookmarks
+        - fedora-chromium-config
+        - fedora-chromium-config-gnome
+        - fedora-flathub-remote
         - gnome-shell-extension-apps-menu
         - gnome-shell-extension-places-menu
         - gnome-shell-extension-window-list
@@ -120,10 +120,9 @@ modules:
           - com.vysp3r.ProtonPlus
           - com.github.Matoking.protontricks
           - com.discordapp.Discord
-
-      - scope: user # Also add Flathub user repo, but no user packages
-  - type: systemd
-    system:
-      enabled: system-flatpak-setup.timer
+#      - scope: user # Also add Flathub user repo, but no user packages
+#  - type: systemd
+#    system:
+#      enabled: system-flatpak-setup.timer
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
