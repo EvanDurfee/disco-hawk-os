@@ -19,26 +19,106 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: bling
+    install:
+      - rpmfusion
+      - dconf-update-service
+
   - type: dnf
 #    repos:
     install:
       packages:
+        # Freeworld drivers
+        - intel-media-driver
+        - mesa-va-drivers-freeworld
+        - mesa-vdpau-drivers-freeworld
+        # Freeworld codecs
+        - gstreamer1-plugin-libav
+        - gstreamer1-plugins-bad-free-extras
+        - gstreamer1-plugins-bad-freeworld
+        - gstreamer1-plugins-ugly
+        - gstreamer1-vaapi
+        - ffmpeg
+        - ffmpeg-libs
+        - ffmpegthumbnailer
+        # Freeworld VA-API tools
+        - libva
+        - libva-utils
+        # Freeworld HEIF (H.265/AV1 Images)
+        - libavif-tools
+        - libheif
+        - libheif-freeworld
+        - heif-pixbuf-loader
+        # Userspace sensor support
+        - lm_sensors
+        # Shell and system tools
+        - distrobox
+        - zsh
+        - ripgrep
+        - fd-find
+        - bat
+        - git-delta
+        - fzf
+        - btop
+        - fastfetch
+        - wireguard-tools
         - micro
+        # Gaming
+        - steam-devices
+        # Shell extension
+        - gnome-shell-extension-user-theme
+        - gnome-shell-extension-caffeine
+        - gnome-shell-extension-launch-new-instance
+        - gnome-shell-extension-appindicator
+        - gnome-shell-extension-just-perfection
+        - gnome-shell-extension-blur-my-shell
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-
+        # Remove non-freeworld drivers
+        - mesa-va-drivers
+        # Remove non-freeworld codecs
+        - fdk-aac-free
+        - libavcodec-free
+        - libavdevice-free
+        - libavfilter-free
+        - libavformat-free
+        - libavutil-free
+        - libpostproc-free
+        - libswresample-free
+        - libswscale-free
+        - ffmpeg-free
+        # Fedora web browser stuff
+        - fedora-bookmarks
+        - fedora-chromium-config
+        - fedora-chromium-config-gnome
+        - fedora-flathub-remote
+        - gnome-shell-extension-apps-menu
+        - gnome-shell-extension-places-menu
+        - gnome-shell-extension-window-list
+        - gnome-system-monitor
+        - gnome-tour
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
+          - flathub com.github.tchx84.Flatseal
+          - io.github.flattool.Warehouse
+          - io.missioncenter.MissionCenter
+          - com.mattjakeman.ExtensionManager
+          - org.altlinux.Tuner
+          - com.usebottles.bottles
+          - org.gnome.Boxes
+          - org.libreoffice.LibreOffice
+          - org.onlyoffice.desktopeditors
+          - org.gimp.GIMP
+          - com.valvesoftware.Steam
+          - com.heroicgameslauncher.hgl
+          - com.vysp3r.ProtonPlus
+          - com.github.Matoking.protontricks
+          - com.discordapp.Discord
+
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
