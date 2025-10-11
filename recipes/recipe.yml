@@ -88,10 +88,10 @@ modules:
         - libswscale-free
         - ffmpeg-free
         # Fedora web browser stuff
-        - fedora-bookmarks
-        - fedora-chromium-config
-        - fedora-chromium-config-gnome
-        - fedora-flathub-remote
+#        - fedora-bookmarks
+#        - fedora-chromium-config
+#        - fedora-chromium-config-gnome
+#        - fedora-flathub-remote
         - gnome-shell-extension-apps-menu
         - gnome-shell-extension-places-menu
         - gnome-shell-extension-window-list
@@ -99,8 +99,6 @@ modules:
         - gnome-tour
   - type: default-flatpaks
     configurations:
-
-
       - notify: true # Send notification after install/uninstall is finished (true/false)
         scope: system
         repo:
