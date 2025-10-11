@@ -112,14 +112,14 @@ modules:
           - org.altlinux.Tuner
           - com.usebottles.bottles
           - org.gnome.Boxes
-          - org.libreoffice.LibreOffice
-          - org.onlyoffice.desktopeditors
-          - org.gimp.GIMP
-          - com.valvesoftware.Steam
-          - com.heroicgameslauncher.hgl
-          - com.vysp3r.ProtonPlus
-          - com.github.Matoking.protontricks
-          - com.discordapp.Discord
+#          - org.libreoffice.LibreOffice
+#          - org.onlyoffice.desktopeditors
+#          - org.gimp.GIMP
+#          - com.valvesoftware.Steam
+#          - com.heroicgameslauncher.hgl
+#          - com.vysp3r.ProtonPlus
+#          - com.github.Matoking.protontricks
+#          - com.discordapp.Discord
 #      - scope: user # Also add Flathub user repo, but no user packages
 #  - type: systemd
 #    system:
