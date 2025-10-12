@@ -27,17 +27,18 @@ modules:
   - type: dnf
     repos:
       nonfree: rpmfusion
+    replace:
+      - allow-erasing: true
+        packages:
+          - old: ffmpeg-free
+            new: ffmpeg
+      - packages:
+          - old: mesa-va-drivers
+            new: mesa-va-drivers-freeworld
+      - packages:
+          - old: mesa-vdpau-drivers
+            new: mesa-vdpau-drivers-freeworld
     install:
-      replace:
-        - packages:
-            - old: ffmpeg-free
-              new: ffmpeg
-        - packages:
-            - old: mesa-va-drivers
-              new: mesa-va-drivers-freeworld
-        - packages:
-            - old: mesa-vdpau-drivers
-              new: mesa-vdpau-drivers-freeworld
       packages:
         # Freeworld drivers
         - intel-media-driver
