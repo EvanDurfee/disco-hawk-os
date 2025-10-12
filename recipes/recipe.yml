@@ -30,27 +30,30 @@ modules:
     replace:
       - allow-erasing: true
         packages:
-          - old: ffmpeg-free
+          - from-repo: rpmfusion-nonfree-release
+            old: ffmpeg-free
             new: ffmpeg
       - packages:
-          - old: mesa-va-drivers
+          - from-repo: rpmfusion-nonfree-release
+            old: mesa-va-drivers
             new: mesa-va-drivers-freeworld
       - packages:
-          - old: mesa-vdpau-drivers
+          - from-repo: rpmfusion-nonfree-release
+            old: mesa-vdpau-drivers
             new: mesa-vdpau-drivers-freeworld
+#      - packages:
+#          - old: mesa-va-drivers.i686
+#            new: mesa-va-drivers-freeworld.i686
+#      - packages:
+#          - old: mesa-vdpau-drivers.i686
+#            new: mesa-vdpau-drivers-freeworld.i686
+    group-install:
+      - install-weak-deps: False
+        exclude: PackageKit-gstreamer-plugin
+        packages:
+          - multimedia
     install:
       packages:
-        # Freeworld drivers
-        - intel-media-driver
-#        - mesa-va-drivers-freeworld
-#        - mesa-vdpau-drivers-freeworld
-        # Freeworld codecs
-#        - gstreamer1-plugin-libav
-#        - gstreamer1-plugins-bad-free-extras
-#        - gstreamer1-plugins-bad-freeworld
-#        - gstreamer1-plugins-ugly
-#        - gstreamer1-vaapi
- #       - ffmpeg
         - ffmpeg-libs
         - ffmpegthumbnailer
         # Freeworld VA-API tools
@@ -63,6 +66,10 @@ modules:
         - heif-pixbuf-loader
         # Userspace sensor support
         - lm_sensors
+        # Freeworld drivers
+        - intel-media-driver
+        - libva-nvidia-driver
+#        - libva-nvidia-driver.i686
         # Shell and system tools
         - distrobox
         - zsh
