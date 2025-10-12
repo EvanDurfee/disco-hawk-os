@@ -45,8 +45,11 @@ modules:
         - restic
         - tmux
         - wl-clipboard
+        - kitty
         # Gaming
         - steam-devices
+
+        - mozilla-openh264
         # Shell extension
         - gnome-shell-extension-user-theme
         - gnome-shell-extension-caffeine
@@ -87,14 +90,14 @@ modules:
           - com.usebottles.bottles
           - org.gnome.Boxes
           - org.gnome.Papers
-#          - org.libreoffice.LibreOffice
-#          - org.onlyoffice.desktopeditors
-#          - org.gimp.GIMP
-#          - com.valvesoftware.Steam
-#          - com.heroicgameslauncher.hgl
-#          - com.vysp3r.ProtonPlus
-#          - com.github.Matoking.protontricks
-#          - com.discordapp.Discord
+          - org.libreoffice.LibreOffice
+          - org.onlyoffice.desktopeditors
+          - org.gimp.GIMP
+          - com.valvesoftware.Steam
+          - com.heroicgameslauncher.hgl
+          - com.vysp3r.ProtonPlus
+          - com.github.Matoking.protontricks
+          - com.discordapp.Discord
 #      - scope: user # Also add Flathub user repo, but no user packages
 #  - type: systemd
 #    system:
