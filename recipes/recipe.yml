@@ -25,20 +25,31 @@ modules:
       - dconf-update-service
 
   - type: dnf
-#    repos:
+    repos:
+      nonfree: rpmfusion
     install:
+      replace:
+        - packages:
+            - old: ffmpeg-free
+              new: ffmpeg
+        - packages:
+            - old: mesa-va-drivers
+              new: mesa-va-drivers-freeworld
+        - packages:
+            - old: mesa-vdpau-drivers
+              new: mesa-vdpau-drivers-freeworld
       packages:
         # Freeworld drivers
         - intel-media-driver
-        - mesa-va-drivers-freeworld
-        - mesa-vdpau-drivers-freeworld
+#        - mesa-va-drivers-freeworld
+#        - mesa-vdpau-drivers-freeworld
         # Freeworld codecs
-        - gstreamer1-plugin-libav
-        - gstreamer1-plugins-bad-free-extras
-        - gstreamer1-plugins-bad-freeworld
-        - gstreamer1-plugins-ugly
-        - gstreamer1-vaapi
-        - ffmpeg
+#        - gstreamer1-plugin-libav
+#        - gstreamer1-plugins-bad-free-extras
+#        - gstreamer1-plugins-bad-freeworld
+#        - gstreamer1-plugins-ugly
+#        - gstreamer1-vaapi
+ #       - ffmpeg
         - ffmpeg-libs
         - ffmpegthumbnailer
         # Freeworld VA-API tools
@@ -72,21 +83,23 @@ modules:
         - gnome-shell-extension-appindicator
         - gnome-shell-extension-just-perfection
         - gnome-shell-extension-blur-my-shell
+      exclude:
+        - gnome-tour
     remove:
       packages:
         # Remove non-freeworld drivers
-        - mesa-va-drivers
+#        - mesa-va-drivers
         # Remove non-freeworld codecs
-        - fdk-aac-free
-        - libavcodec-free
-        - libavdevice-free
-        - libavfilter-free
-        - libavformat-free
-        - libavutil-free
-        - libpostproc-free
-        - libswresample-free
-        - libswscale-free
-        - ffmpeg-free
+#        - fdk-aac-free
+#        - libavcodec-free
+#        - libavdevice-free
+#        - libavfilter-free
+#        - libavformat-free
+#        - libavutil-free
+#        - libpostproc-free
+#        - libswresample-free
+#        - libswscale-free
+#        - ffmpeg-free
         # Fedora web browser stuff
         - fedora-bookmarks
         - fedora-chromium-config
