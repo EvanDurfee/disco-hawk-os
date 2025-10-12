@@ -91,27 +91,33 @@ modules:
         - fedora-bookmarks
         - fedora-chromium-config
         - fedora-chromium-config-gnome
+        # Fedora flathub and filtered rpmfusion repos
         - fedora-flathub-remote
-        - gnome-shell-extension-apps-menu
-        - gnome-shell-extension-places-menu
-        - gnome-shell-extension-window-list
+        - fedora-workstation-repositories
+        # Extensions
+#        - gnome-shell-extension-apps-menu
+#        - gnome-shell-extension-places-menu
+#        - gnome-shell-extension-window-list
+        # Replace system monitor with MissionCenter
         - gnome-system-monitor
         - gnome-tour
-  - type: default-flatpaks
-    configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        repo:
-          title: Flathub (system)
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - com.github.tchx84.Flatseal
-          - io.github.flattool.Warehouse
-          - io.missioncenter.MissionCenter
-          - com.mattjakeman.ExtensionManager
-          - org.altlinux.Tuner
-          - com.usebottles.bottles
-          - org.gnome.Boxes
+   # Default Flatpaks is disabled for now, until I can determine why it fails on fedora rebase.
+#  - type: default-flatpaks
+#    configurations:
+#      - notify: true # Send notification after install/uninstall is finished (true/false)
+#        scope: system
+#        repo:
+#          title: Flathub (system)
+#        # If no repo information is specified, Flathub will be used by default
+#        install: # system flatpaks we want all users to have and not remove
+#          - com.github.tchx84.Flatseal
+#          - io.github.flattool.Warehouse
+#          - io.missioncenter.MissionCenter
+#          - com.mattjakeman.ExtensionManager
+#          - org.altlinux.Tuner
+#          - com.usebottles.bottles
+#          - org.gnome.Boxes
+#          - org.gnome.Papers
 #          - org.libreoffice.LibreOffice
 #          - org.onlyoffice.desktopeditors
 #          - org.gimp.GIMP
