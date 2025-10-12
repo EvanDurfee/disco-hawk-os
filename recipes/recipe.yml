@@ -6,9 +6,7 @@ name: disco-hawk
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-# base-image: ghcr.io/ublue-os/silverblue-main
-# base-image: quay.io/fedora/fedora-bootc
-base-image: quay.io/fedora-ostree-desktops/silverblue
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: 42 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -21,56 +19,17 @@ modules:
 
   - type: bling
     install:
-      - rpmfusion
       - dconf-update-service
 
   - type: dnf
     repos:
       nonfree: rpmfusion
-    replace:
-      - allow-erasing: true
-        packages:
-          - from-repo: rpmfusion-nonfree-release
-            old: ffmpeg-free
-            new: ffmpeg
-      - packages:
-          - from-repo: rpmfusion-nonfree-release
-            old: mesa-va-drivers
-            new: mesa-va-drivers-freeworld
-      - packages:
-          - from-repo: rpmfusion-nonfree-release
-            old: mesa-vdpau-drivers
-            new: mesa-vdpau-drivers-freeworld
-#      - packages:
-#          - old: mesa-va-drivers.i686
-#            new: mesa-va-drivers-freeworld.i686
-#      - packages:
-#          - old: mesa-vdpau-drivers.i686
-#            new: mesa-vdpau-drivers-freeworld.i686
-    group-install:
-      - install-weak-deps: False
-        exclude: PackageKit-gstreamer-plugin
-        packages:
-          - multimedia
     install:
       packages:
-        - ffmpeg-libs
-        - ffmpegthumbnailer
-        # Freeworld VA-API tools
-        - libva
-        - libva-utils
-        # Freeworld HEIF (H.265/AV1 Images)
-        - libavif-tools
-        - libheif
-        - libheif-freeworld
-        - heif-pixbuf-loader
         # Userspace sensor support
         - lm_sensors
-        # Freeworld drivers
-        - intel-media-driver
-        - libva-nvidia-driver
-#        - libva-nvidia-driver.i686
         # Shell and system tools
+        - git-credential-libsecret
         - distrobox
         - zsh
         - ripgrep
@@ -82,6 +41,10 @@ modules:
         - fastfetch
         - wireguard-tools
         - micro
+        - rclone
+        - restic
+        - tmux
+        - wl-clipboard
         # Gaming
         - steam-devices
         # Shell extension
@@ -95,50 +58,35 @@ modules:
         - gnome-tour
     remove:
       packages:
-        # Remove non-freeworld drivers
-#        - mesa-va-drivers
-        # Remove non-freeworld codecs
-#        - fdk-aac-free
-#        - libavcodec-free
-#        - libavdevice-free
-#        - libavfilter-free
-#        - libavformat-free
-#        - libavutil-free
-#        - libpostproc-free
-#        - libswresample-free
-#        - libswscale-free
-#        - ffmpeg-free
-        # Fedora web browser stuff
         - fedora-bookmarks
         - fedora-chromium-config
         - fedora-chromium-config-gnome
-        # Fedora flathub and filtered rpmfusion repos
         - fedora-flathub-remote
         - fedora-workstation-repositories
         # Extensions
-#        - gnome-shell-extension-apps-menu
-#        - gnome-shell-extension-places-menu
-#        - gnome-shell-extension-window-list
+        - gnome-shell-extension-apps-menu
+        - gnome-shell-extension-places-menu
+        - gnome-shell-extension-window-list
         # Replace system monitor with MissionCenter
         - gnome-system-monitor
         - gnome-tour
    # Default Flatpaks is disabled for now, until I can determine why it fails on fedora rebase.
-#  - type: default-flatpaks
-#    configurations:
-#      - notify: true # Send notification after install/uninstall is finished (true/false)
-#        scope: system
-#        repo:
-#          title: Flathub (system)
-#        # If no repo information is specified, Flathub will be used by default
-#        install: # system flatpaks we want all users to have and not remove
-#          - com.github.tchx84.Flatseal
-#          - io.github.flattool.Warehouse
-#          - io.missioncenter.MissionCenter
-#          - com.mattjakeman.ExtensionManager
-#          - org.altlinux.Tuner
-#          - com.usebottles.bottles
-#          - org.gnome.Boxes
-#          - org.gnome.Papers
+  - type: default-flatpaks
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
+        repo:
+          title: Flathub (system)
+        # If no repo information is specified, Flathub will be used by default
+        install: # system flatpaks we want all users to have and not remove
+          - com.github.tchx84.Flatseal
+          - io.github.flattool.Warehouse
+          - io.missioncenter.MissionCenter
+          - com.mattjakeman.ExtensionManager
+          - org.altlinux.Tuner
+          - com.usebottles.bottles
+          - org.gnome.Boxes
+          - org.gnome.Papers
 #          - org.libreoffice.LibreOffice
 #          - org.onlyoffice.desktopeditors
 #          - org.gimp.GIMP
