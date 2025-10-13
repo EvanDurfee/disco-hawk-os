@@ -45,7 +45,6 @@ modules:
         - restic
         - tmux
         - wl-clipboard
-        - kitty
         # Gaming
         - steam-devices
 
@@ -73,6 +72,7 @@ modules:
         # Replace system monitor with MissionCenter
         - gnome-system-monitor
         - gnome-tour
+        - htop
    # Default Flatpaks is disabled for now, until I can determine why it fails on fedora rebase.
   - type: default-flatpaks
     configurations:
