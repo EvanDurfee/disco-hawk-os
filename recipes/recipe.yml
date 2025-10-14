@@ -28,8 +28,11 @@ modules:
       packages:
         # Userspace sensor support
         - lm_sensors
+        # Virtualization and multi-arch distrobox support
+        - qemu
+        - qemu-user-static
+        - gnome-boxes
         # Shell and system tools
-        - git-credential-libsecret
         - distrobox
         - zsh
         - ripgrep
@@ -44,6 +47,7 @@ modules:
         - rclone
         - restic
         - tmux
+        - git-credential-libsecret
         - wl-clipboard
         # Gaming
         - steam-devices
@@ -88,7 +92,7 @@ modules:
           - com.mattjakeman.ExtensionManager
           - org.altlinux.Tuner
           - com.usebottles.bottles
-          - org.gnome.Boxes
+#          - org.gnome.Boxes
           - org.gnome.Papers
           - org.libreoffice.LibreOffice
           - org.onlyoffice.desktopeditors
