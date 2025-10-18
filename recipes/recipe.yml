@@ -14,8 +14,12 @@ image-version: 42 # latest is also supported if you want new updates ASAP
 modules:
   - type: files
     files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+      - source: distrobox-auto/units
+        destination: /usr/lib/systemd/user/
+      - source: distrobox-auto/bin
+        destination: /usr/libexec/
+#      - source: system
+#        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: bling
     install:

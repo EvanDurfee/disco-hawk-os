@@ -29,6 +29,11 @@ jobs:
           # !! Add your recipes here
           - recipe.yml
     steps:
+      - name: checkout submodules
+        uses: actions/checkout@v2
+        with:
+          # Non-recursive pull
+          submodules: true
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
         uses: blue-build/github-action@v1.9
